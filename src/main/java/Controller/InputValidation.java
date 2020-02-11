@@ -14,7 +14,7 @@ public class InputValidation {
             validateRepeat(inputs);
             validateOperators(inputs);
             return inputs;
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             OutputView.printInputExceptionMessage(e);
         }
         return getValidatedInput();
@@ -26,9 +26,9 @@ public class InputValidation {
      * @param inputs
      * @throws Exception
      */
-    public static void validateSpace(String[] inputs) throws Exception {
+    public static void validateSpace(String[] inputs) throws IllegalArgumentException {
         if (inputs[0].isEmpty() || inputs == null) {
-            throw new Exception("식이 입력되지 않았습니다.");
+            throw new IllegalArgumentException("식이 입력되지 않았습니다.");
         }
     }
 
@@ -38,9 +38,9 @@ public class InputValidation {
      * @param inputs
      * @throws Exception
      */
-    public static void validateFirstAndLast(String[] inputs) throws Exception {
+    public static void validateFirstAndLast(String[] inputs) throws IllegalArgumentException {
         if (!isInteger(inputs[0]) || !isInteger(inputs[inputs.length - 1])) {
-            throw new Exception("식의 처음과 마지막은 숫자여야 합니다.");
+            throw new IllegalArgumentException("식의 처음과 마지막은 숫자여야 합니다.");
         }
     }
 
@@ -50,10 +50,10 @@ public class InputValidation {
      * @param inputs
      * @throws Exception
      */
-    public static void validateRepeat(String[] inputs) throws Exception {
+    public static void validateRepeat(String[] inputs) throws IllegalArgumentException {
         for (int i = 1; i < inputs.length; i++) {
             if (!(isInteger(inputs[i - 1]) ^ isInteger(inputs[i]))) {
-                throw new Exception("연속된 숫자 또는 연산자입니다.");
+                throw new IllegalArgumentException("연속된 숫자 또는 연산자입니다.");
             }
         }
     }
@@ -64,10 +64,10 @@ public class InputValidation {
      * @param inputs
      * @throws Exception
      */
-    public static void validateOperators(String[] inputs) throws Exception {
+    public static void validateOperators(String[] inputs) throws IllegalArgumentException {
         for (int i = 1; i < inputs.length; i += 2) {
             if (StringCalculator.getOperatorByString(inputs[i]) == null) {
-                throw new Exception("올바른 연산자가 아닙니다.");
+                throw new IllegalArgumentException("올바른 연산자가 아닙니다.");
             }
         }
     }
