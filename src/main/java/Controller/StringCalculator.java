@@ -3,11 +3,25 @@ package Controller;
 import View.OutputView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class StringCalculator {
     private List<Integer> numbers = new ArrayList<>();
     private List<Operator> operators = new ArrayList<>();
+    private static Map<String, Operator> operatorMap = new HashMap<String, Operator>(){
+        {
+            put("+", Operator.PLUS);
+            put("-", Operator.MINUS);
+            put("*", Operator.MULTIPLY);
+            put("/", Operator.DIVIDE);
+        }
+    };
+
+    public static Operator getOperatorByString(String val){
+        return operatorMap.get(val);
+    }
 
     public void run() {
         initializeInputs();
@@ -23,7 +37,7 @@ public class StringCalculator {
             try {
                 numbers.add(Integer.parseInt(val));
             } catch (Exception e) {
-                operators.add(OperatorMap.getOperatorByString(val));
+                operators.add(getOperatorByString(val));
             }
         }
     }

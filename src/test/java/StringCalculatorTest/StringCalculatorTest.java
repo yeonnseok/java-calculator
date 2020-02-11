@@ -1,20 +1,33 @@
 package StringCalculatorTest;
 
 import Controller.Operator;
-import Controller.OperatorMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculatorTest {
 
-    List<Integer> numbers = new ArrayList<>();
-    List<Operator> operators = new ArrayList<>();
+    private List<Integer> numbers = new ArrayList<>();
+    private List<Operator> operators = new ArrayList<>();
+    private static Map<String, Operator> operatorMap = new HashMap<String, Operator>(){
+        {
+            put("+", Operator.PLUS);
+            put("-", Operator.MINUS);
+            put("*", Operator.MULTIPLY);
+            put("/", Operator.DIVIDE);
+        }
+    };
+
+    private static Operator getOperatorByString(String val){
+        return operatorMap.get(val);
+    }
 
     @BeforeEach
     void setUp(){
@@ -22,9 +35,9 @@ public class StringCalculatorTest {
         numbers.add(1);
         numbers.add(2);
         numbers.add(3);
-        operators.add(OperatorMap.getOperatorByString("+"));
-        operators.add(OperatorMap.getOperatorByString("-"));
-        operators.add(OperatorMap.getOperatorByString("*"));
+        operators.add(getOperatorByString("+"));
+        operators.add(getOperatorByString("-"));
+        operators.add(getOperatorByString("*"));
     }
 
     @DisplayName("문자열 식 계산")
