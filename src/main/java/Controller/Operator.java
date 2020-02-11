@@ -1,27 +1,27 @@
 package Controller;
 
 public enum Operator {
-    PLUS("+"){
+    PLUS("+") {
         @Override
-        public double compute(double num1, double num2){
+        public double compute(double num1, double num2) {
             return num1 + num2;
         }
     },
-    MINUS("-"){
+    MINUS("-") {
         @Override
-        public double compute(double num1, double num2){
+        public double compute(double num1, double num2) {
             return num1 - num2;
         }
     },
-    MULTIPLY("*"){
+    MULTIPLY("*") {
         @Override
-        public double compute(double num1, double num2){
+        public double compute(double num1, double num2) {
             return num1 * num2;
         }
     },
-    DIVIDE("/"){
+    DIVIDE("/") {
         @Override
-        public double compute(double num1, double num2){
+        public double compute(double num1, double num2) {
             return num1 / num2;
         }
     };

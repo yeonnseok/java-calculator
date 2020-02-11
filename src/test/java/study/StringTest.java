@@ -9,7 +9,7 @@ public class StringTest {
 
     @DisplayName("1. string split, contain test")
     @Test
-    void split(){
+    void split() {
         String value = "1,2";
         String[] result = value.split(",");
         assertThat(result).contains("1");
@@ -18,15 +18,15 @@ public class StringTest {
 
     @DisplayName("2. string substring test")
     @Test
-    void splitSubstring(){
+    void splitSubstring() {
         String value = "(1,2)";
-        String result = value.substring(1, value.length()-1);
+        String result = value.substring(1, value.length() - 1);
         assertThat(result).isEqualTo("1,2");
     }
 
     @DisplayName("3. IndexOutOfBound test")
     @Test
-    void indexCheck(){
+    void indexCheck() {
         assertThatThrownBy(() -> {
             String value = "abc";
             char result2 = value.charAt(5);

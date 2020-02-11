@@ -18,7 +18,7 @@ public class SetTest {
     private Set numbers;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         numbers = new HashSet<>();
         numbers.add(1);
         numbers.add(1);
@@ -28,14 +28,14 @@ public class SetTest {
 
     @Test
     @DisplayName("1. set size test")
-    void size(){
+    void size() {
         int size = numbers.size();
         assertThat(size).isEqualTo(3);
     }
 
     @DisplayName("2. set contain test")
     @ParameterizedTest
-    @ValueSource(ints = {1,2,3})
+    @ValueSource(ints = {1, 2, 3})
     void contain(Integer input) {
         assertThat(numbers.contains(input)).isTrue();
     }
@@ -43,7 +43,7 @@ public class SetTest {
     @DisplayName("3. set value match test")
     @ParameterizedTest
     @CsvSource(value = {"1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
-    void pairValue(int input, Boolean expected){
+    void pairValue(int input, Boolean expected) {
         Boolean result = numbers.contains(input) ? true : false;
         assertThat(result).isEqualTo(expected);
     }
