@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -40,9 +41,17 @@ public class SetTest {
         assertThat(numbers.contains(input)).isTrue();
     }
 
+//    @DisplayName("3. set value match test")
+//    @ParameterizedTest
+//    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
+//    void pairValue(int input, Boolean expected){
+//        Boolean result = numbers.contains(input) ? true : false;
+//        assertThat(result).isEqualTo(expected);
+//    }
+
     @DisplayName("3. set value match test")
     @ParameterizedTest
-    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false"}, delimiter = ':')
+    @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
     void pairValue(int input, Boolean expected){
         Boolean result = numbers.contains(input) ? true : false;
         assertThat(result).isEqualTo(expected);
